@@ -5,6 +5,7 @@
 #include <stddef.h>
 #include <string.h>
 #include <locale.h>
+#include <math.h>
 typedef struct matrix{
 	    double *data; // data + w * i + j
 	    size_t w, h; //w-длина(количество столбцов), h-высота(количество строк)
@@ -33,4 +34,6 @@ int matrix_assign (matrix *m1, const matrix *m2);
 void vvod(matrix *m);
 //вывод матрицы в консоль
 void vivod(const matrix *m);
+//изменение размеров матрицы
+matrix * matrix_realloc(matrix * m,size_t w, size_t h);
 #endif // MATRIX_H_INCLUDED

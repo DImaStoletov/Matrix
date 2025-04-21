@@ -99,8 +99,17 @@ void vivod(const matrix *m){
     }
 }
 
-
-
+matrix * matrix_realloc(matrix * m,size_t w, size_t h){
+    if(m==NULL) return NULL;
+    free(m->data);
+    m->data = malloc(h*w*sizeof(double));
+    if(!m->data){
+        free(m);
+        return NULL;
+    }
+    m->h=h; m->w = w;
+    return m;
+}
 
 
 
