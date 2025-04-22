@@ -79,10 +79,10 @@ matrix * matrix_copy (const matrix *m){
 
 void vvod(matrix *m){
     if(m==NULL) return;
-    printf("Введите матрицу размером %ux%u:\n", (unsigned int)m->h, (unsigned int)m->w);
+    printf("Input matrix size %ux%u:\n", (unsigned int)m->h, (unsigned int)m->w);
     for (size_t i = 0; i < m->h; ++i) {
         for (size_t j = 0; j < m->w; ++j) {
-            printf("Элемент [%u][%u]: ", (unsigned int)i, (unsigned int)j);
+            printf("Element [%u][%u]: ", (unsigned int)i, (unsigned int)j);
             scanf("%lf", matrix_ptr(m, i, j));
         }
     }
@@ -90,10 +90,11 @@ void vvod(matrix *m){
 
 void vivod(const matrix *m){
     if(m==NULL) return;
-    printf("Матрица размером %ux%u:\n", (unsigned int)m->h, (unsigned int)m->w);
+    printf("Matrix size %ux%u:\n", (unsigned int)m->h, (unsigned int)m->w);
     for (size_t i = 0; i < m->h; ++i) {
         for (size_t j = 0; j < m->w; ++j) {
-            printf(*matrix_cptr(m,i,j) == (int)*matrix_cptr(m,i,j) ? "%-8.0lf " : "%-8.2lf ", *matrix_cptr(m,i,j));
+            if(*matrix_cptr(m,i,j)==0) printf("%-8.0lf ", fabs(*matrix_cptr(m,i,j)));
+            else printf(*matrix_cptr(m,i,j) == (int)*matrix_cptr(m,i,j) ? "%-8.0lf " : "%-8.2lf ", *matrix_cptr(m,i,j));
         }
         printf("\n");
     }
