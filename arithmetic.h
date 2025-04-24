@@ -1,6 +1,7 @@
 #ifndef ARITHMETIC_H_INCLUDED
 #define ARITHMETIC_H_INCLUDED
 #include "matrix.h"
+
 //сложение m1+=m2
 int matrix_add (matrix *m1, const matrix *m2);
 //вычитание m1-=m2

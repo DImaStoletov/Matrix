@@ -1,9 +1,9 @@
 #include "exp+gauss.h"
 
 int matrix_exp(matrix *m, const matrix *A, double eps){
-    if (m == NULL || A == NULL || A->w != A->h || m->w != A->w || m->h != A->h) return -1;
-    matrix *x = matrix_alloc(m->h,m->w);
-    matrix *y = matrix_alloc(m->h,m->w);
+    if (m == NULL || A == NULL || m_w(A) != m_h(A) || m_w(m) != m_w(A) || m_h(m) != m_h(A)) return -1;
+    matrix *x = matrix_alloc(m_h(m),m_w(m));
+    matrix *y = matrix_alloc(m_h(m),m_w(m));
     if (x == NULL || y == NULL) {matrix_free(x); matrix_free(y); return -1;}
     matrix_set_id(m);
     matrix_assign(x, A); //(A^1/1!)
@@ -20,8 +20,8 @@ int matrix_exp(matrix *m, const matrix *A, double eps){
 
 
 matrix* gauss(const matrix* A, const matrix* B) {
-    if (A == NULL || B == NULL || A->w != A->h || A->h != B->h || B->w != 1) return NULL;
-    size_t n = A->h;
+    if (A == NULL || B == NULL || m_w(A) != m_h(A) || m_h(A) != m_h(B) || m_w(B) != 1) return NULL;
+    size_t n = m_h(A);
 
 //  [A|B]
     matrix* aug = matrix_alloc(n, n + 1);

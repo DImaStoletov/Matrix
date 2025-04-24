@@ -1,6 +1,7 @@
 #ifndef OTHER_H_INCLUDED
 #define OTHER_H_INCLUDED
 #include "matrix.h"
+
 //транспонирование матрицы
 matrix * matrix_T(matrix * m);
 //перестановка строк по номеру, не по индексу

@@ -1,5 +1,20 @@
 #include "matrix.h"
 
+struct matrix{
+    double *data; // data + w * i + j
+    size_t w, h; //w-длина(количество столбцов), h-высота(количество строк)
+};
+
+size_t m_w(const matrix* m) {
+    if (m==NULL) return 0;
+    return m->w;
+}
+
+size_t m_h(const matrix* m) {
+    if (m==NULL) return 0;
+    return m->h;
+}
+
 matrix* matrix_alloc(size_t h,size_t w){
     matrix * a = malloc(sizeof(matrix));
     if (!a) return NULL;
@@ -34,7 +49,6 @@ void matrix_set_zero (matrix *m){
     }
 }
 
-
 void matrix_set_id (matrix *m){
     if(m==NULL) return;
     for(size_t i=0; i<m->h;++i){
@@ -44,7 +58,6 @@ void matrix_set_id (matrix *m){
         }
     }
 }
-
 
 matrix * matrix_alloc_zero (size_t w, size_t h){
     matrix * a = matrix_alloc(w,h);

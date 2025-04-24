@@ -6,10 +6,10 @@
 #include <string.h>
 #include <locale.h>
 #include <math.h>
-typedef struct matrix{
-	    double *data; // data + w * i + j
-	    size_t w, h; //w-длина(количество столбцов), h-высота(количество строк)
-} matrix;
+typedef struct matrix matrix;
+//доступ к количеству строк/столбцов
+size_t m_w(const matrix* m);
+size_t m_h(const matrix* m);
 //инициализация динамического массива
 matrix * matrix_alloc (size_t w, size_t h);
 //копирование матрицы
